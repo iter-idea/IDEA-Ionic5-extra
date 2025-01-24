@@ -220,12 +220,7 @@ export class IDEAHTMLEditorComponent implements OnInit, OnChanges {
   }
 
   private insertImageAtLastDropPosition(imageUrl: string): void {
-    if (this.lastDropPosition) {
-      const imgElement = document.createElement('img');
-      imgElement.src = imageUrl;
-      this.lastDropPosition.insertNode(imgElement);
-      this.lastDropPosition = null;
-    }
+    if (this.lastDropPosition) this.editor.executeCommand('insertImage', imageUrl);
   }
 
   moveCursorToDropPosition(event: DragEvent): void {
